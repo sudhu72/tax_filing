@@ -1,0 +1,113 @@
+form_name: Form 1040
+description: Individual Income Tax Return - core fields aligned with IRS Form 1040.
+fields:
+  # Identity
+  - key: full_name
+    description: Taxpayer full legal name
+    aliases: ["Name", "Full Name", "Taxpayer Name"]
+    default: ""
+  - key: ssn
+    description: Social Security Number
+    aliases: ["SSN", "Social Security", "Social Security Number"]
+    default: ""
+  - key: spouse_ssn
+    description: Spouse SSN if married filing jointly
+    aliases: ["Spouse SSN", "Spouse Social Security"]
+    default: ""
+  - key: address
+    description: Street address
+    aliases: ["Address", "Street", "Street Address"]
+    default: ""
+  - key: city_state_zip
+    description: City, state, ZIP code
+    aliases: ["City", "State", "ZIP", "City State ZIP"]
+    default: ""
+  # Filing status
+  - key: filing_status
+    description: Single, Married filing jointly, etc.
+    aliases: ["Filing Status", "Status"]
+    default: "Single"
+  # Income - W-2
+  - key: wages
+    description: Wages, salaries, tips (W-2 box 1)
+    aliases: ["Wages", "Box 1", "W2 Box 1", "Salary", "Compensation"]
+    default: "0"
+  - key: fed_tax_withheld
+    description: Federal income tax withheld (W-2 box 2)
+    aliases: ["Withholding", "Federal Withheld", "W2 Box 2"]
+    default: "0"
+  # Interest
+  - key: taxable_interest
+    description: Taxable interest income
+    aliases: ["Interest", "Taxable Interest", "1099-INT"]
+    default: "0"
+  # Dividends
+  - key: qualified_dividends
+    description: Qualified dividends
+    aliases: ["Qualified Dividends", "1099-DIV"]
+    default: "0"
+  - key: ordinary_dividends
+    description: Ordinary dividends
+    aliases: ["Ordinary Dividends"]
+    default: "0"
+  # Retirement
+  - key: ira_distributions
+    description: IRA distributions
+    aliases: ["IRA", "IRA Distribution"]
+    default: "0"
+  - key: taxable_ira
+    description: Taxable amount of IRA distributions
+    aliases: ["Taxable IRA"]
+    default: "0"
+  - key: pensions_annuities
+    description: Pensions and annuities
+    aliases: ["Pension", "Annuity", "1099-R"]
+    default: "0"
+  - key: taxable_pension
+    description: Taxable amount of pensions
+    aliases: ["Taxable Pension"]
+    default: "0"
+  # Social Security
+  - key: social_security_benefits
+    description: Social Security benefits received
+    aliases: ["Social Security", "SS Benefits", "SSA"]
+    default: "0"
+  - key: taxable_social_security
+    description: Taxable Social Security
+    aliases: ["Taxable SS"]
+    default: "0"
+  # Other income
+  - key: capital_gain_loss
+    description: Capital gain or loss (Schedule D)
+    aliases: ["Capital Gain", "Capital Loss", "Schedule D"]
+    default: "0"
+  - key: sch_c_income
+    description: Business income (Schedule C)
+    aliases: ["Schedule C", "Self-employment", "Business Income"]
+    default: "0"
+  - key: other_income
+    description: Other income
+    aliases: ["Other Income", "Miscellaneous"]
+    default: "0"
+  # Adjustments
+  - key: educator_expenses
+    description: Educator expenses
+    aliases: ["Educator Expenses"]
+    default: "0"
+  - key: ira_deduction
+    description: IRA deduction
+    aliases: ["IRA Deduction"]
+    default: "0"
+  - key: student_loan_interest
+    description: Student loan interest deduction
+    aliases: ["Student Loan", "Student Loan Interest"]
+    default: "0"
+  - key: other_adjustments
+    description: Other adjustments to income
+    aliases: ["Other Adjustments"]
+    default: "0"
+  # Standard deduction election
+  - key: use_standard_deduction
+    description: Use standard deduction (true/false)
+    aliases: ["Standard Deduction", "Itemize"]
+    default: "true"

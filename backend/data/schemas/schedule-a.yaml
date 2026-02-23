@@ -1,0 +1,49 @@
+form_name: Schedule A (Form 1040)
+description: Itemized Deductions - medical, taxes, interest, gifts, casualty.
+fields:
+  # Medical and dental (line 1-4)
+  - key: medical_expenses
+    description: Medical and dental expenses (before 7.5% floor)
+    aliases: ["Medical", "Medical Expenses", "Dental", "Health Care"]
+    default: "0"
+  - key: medical_insurance_reimbursement
+    description: Reimbursement for medical expenses
+    aliases: ["Medical Reimbursement", "Insurance Reimbursement"]
+    default: "0"
+  # Taxes paid (SALT - line 5)
+  - key: state_local_income_tax
+    description: State and local income taxes
+    aliases: ["State Tax", "Income Tax", "SALT", "State and Local"]
+    default: "0"
+  - key: state_local_sales_tax
+    description: State and local sales taxes (alternative to income tax)
+    aliases: ["Sales Tax"]
+    default: "0"
+  - key: real_estate_tax
+    description: Real estate taxes
+    aliases: ["Property Tax", "Real Estate Tax"]
+    default: "0"
+  # Interest (line 8)
+  - key: home_mortgage_interest
+    description: Home mortgage interest and points
+    aliases: ["Mortgage Interest", "1098", "Interest Paid"]
+    default: "0"
+  # Gifts to charity (line 11)
+  - key: charitable_cash
+    description: Cash charitable contributions
+    aliases: ["Charity", "Charitable", "Donations"]
+    default: "0"
+  - key: charitable_non_cash
+    description: Non-cash charitable contributions
+    aliases: ["Charitable Non-cash", "Donated Property"]
+    default: "0"
+  # Casualty and theft (line 15)
+  - key: casualty_theft_loss
+    description: Casualty or theft loss
+    aliases: ["Casualty", "Theft", "Disaster Loss"]
+    default: "0"
+  # Other (line 16) - e.g. impairment-related work expenses
+  - key: other_itemized
+    description: Other itemized deductions
+    aliases: ["Other", "Impairment-related", "Work Expenses"]
+    default: "0"

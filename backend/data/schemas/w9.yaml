@@ -1,0 +1,23 @@
+form_name: W-9
+description: Basic mapping schema for common W-9 identity fields.
+fields:
+  - key: full_name
+    description: Legal full name
+    aliases: ["Name", "Full Name", "Legal Name"]
+    default: ""
+  - key: business_name
+    description: Business or disregarded entity name
+    aliases: ["Business Name", "DBA", "Entity Name"]
+    default: ""
+  - key: tin
+    description: Taxpayer identification number (SSN/EIN)
+    aliases: ["TIN", "SSN", "EIN", "Taxpayer ID"]
+    default: ""
+  - key: address_line_1
+    description: Street address
+    aliases: ["Address", "Street", "Street Address"]
+    default: ""
+  - key: city_state_zip
+    description: City, state, and zip code
+    aliases: ["City", "State", "ZIP", "Zip Code", "City State ZIP"]
+    default: ""

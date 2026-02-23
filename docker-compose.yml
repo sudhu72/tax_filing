@@ -1,0 +1,37 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: tax-filing-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_DATA_DIR=/app/data
+      - APP_ALLOW_ORIGINS=["http://localhost:5173","http://127.0.0.1:5173"]
+      - APP_SMTP_ENABLED=${APP_SMTP_ENABLED:-false}
+      - APP_SMTP_HOST=${APP_SMTP_HOST:-mailhog}
+      - APP_SMTP_PORT=${APP_SMTP_PORT:-1025}
+      - APP_SMTP_FROM=${APP_SMTP_FROM:-noreply@local.tax}
+      - APP_WEBHOOK_ENABLED=${APP_WEBHOOK_ENABLED:-false}
+    volumes:
+      - ./backend/data:/app/data
+    depends_on:
+      - mailhog
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tax-filing-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_BASE=http://localhost:8000/api/workflow
+    depends_on:
+      - backend
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: tax-filing-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"

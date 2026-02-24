@@ -923,6 +923,18 @@ select:focus {
   color: #b91c1c;
 }
 
+.doc-card-feedback {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.doc-card-feedback select {
+  min-width: 160px;
+}
+
 .doc-card-fields {
   margin-top: 0.5rem;
   padding-top: 0.5rem;
@@ -968,4 +980,128 @@ select:focus {
 .doc-merged-val {
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.card-lite {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.doc-tester h3 {
+  margin: 0 0 0.35rem;
+}
+
+.doc-tester p {
+  margin: 0 0 0.5rem;
+  color: var(--text-muted);
+}
+
+.doc-test-upload {
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.doc-test-file {
+  color: #1a1a2e !important;
+  font-size: 0.9rem;
+  margin: 0.35rem 0 0.5rem !important;
+}
+
+.doc-test-results {
+  margin-top: 0.8rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.doc-test-results h4,
+.doc-test-results h5 {
+  margin: 0.5rem 0;
+}
+
+.doc-feedback-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: end;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.doc-feedback-controls label {
+  margin: 0;
+}
+
+.doc-feedback-controls select {
+  min-width: 180px;
+}
+
+.doc-feedback-msg {
+  margin: 0.35rem 0 0.6rem !important;
+  color: #166534 !important;
+  font-size: 0.9rem;
+}
+
+.doc-feedback-stats h3 {
+  margin: 0 0 0.35rem;
+}
+
+.doc-feedback-stats p {
+  margin: 0 0 0.5rem;
+}
+
+.stats-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.25rem 0 0.8rem;
+}
+
+.stats-pill {
+  background: #eef6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e3a8a;
+  border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.stats-grid h5 {
+  margin: 0 0 0.35rem;
+}
+
+.stats-grid ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+}
+
+.score-item {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.doc-snippet {
+  margin-top: 0.5rem;
+  max-height: 220px;
 }

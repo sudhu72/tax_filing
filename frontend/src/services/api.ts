@@ -215,12 +215,51 @@ export type ClassifiedDoc = {
   confidence: number;
   extracted_fields: Record<string, number | string>;
   message?: string;
+  raw_snippet?: string | null;
+  score_breakdown?: Record<string, number>;
 };
 
 export type DocumentIntakeResult = {
   documents: ClassifiedDoc[];
   merged_fields: Record<string, number>;
   message: string;
+};
+
+export type DocumentTestResult = {
+  document: ClassifiedDoc;
+  tax_relevant_fields: string[];
+};
+
+export type DocumentFeedbackRequest = {
+  filename: string;
+  predicted_doc_type: string;
+  corrected_doc_type: string;
+  raw_snippet?: string;
+  accepted?: boolean;
+};
+
+export type DocumentFeedbackResponse = {
+  ok: boolean;
+  message: string;
+  feedback_count: number;
+};
+
+export type FeedbackConfusionRow = {
+  predicted: string;
+  corrected: string;
+  count: number;
+};
+
+export type FeedbackClassRow = {
+  doc_type: string;
+  count: number;
+};
+
+export type DocumentFeedbackStats = {
+  feedback_count: number;
+  top_confusions: FeedbackConfusionRow[];
+  top_classes: FeedbackClassRow[];
+  class_bias: Record<string, number>;
 };
 
 const DOCUMENT_INTAKE_BASE = `${API_ORIGIN}/api/document-intake`;
@@ -234,4 +273,29 @@ export async function processDocuments(files: File[]): Promise<DocumentIntakeRes
     throw new Error(body?.detail ?? `Request failed with ${response.status}`);
   }
   return response.json() as Promise<DocumentIntakeResult>;
+}
+
+export async function testDocument(file: File): Promise<DocumentTestResult> {
+  const formData = new FormData();
+  formData.append("file", file);
+  const response = await fetch(`${DOCUMENT_INTAKE_BASE}/test`, { method: "POST", body: formData });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(body?.detail ?? `Request failed with ${response.status}`);
+  }
+  return response.json() as Promise<DocumentTestResult>;
+}
+
+export async function submitDocumentFeedback(
+  payload: DocumentFeedbackRequest
+): Promise<DocumentFeedbackResponse> {
+  return jsonRequest(`${DOCUMENT_INTAKE_BASE}/feedback`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getDocumentFeedbackStats(): Promise<DocumentFeedbackStats> {
+  return jsonRequest(`${DOCUMENT_INTAKE_BASE}/feedback/stats`, { method: "GET" });
 }
